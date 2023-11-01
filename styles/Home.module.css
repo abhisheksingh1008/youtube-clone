@@ -1,0 +1,7 @@
+.videos-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  min-width: 100%;
+  max-width: 100%;
+}

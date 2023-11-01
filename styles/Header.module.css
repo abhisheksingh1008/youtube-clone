@@ -1,0 +1,11 @@
+.header {
+  position: fixed;
+  top: 0;
+  min-width: 100%;
+  z-index: 999;
+}
+
+.logo {
+  width: 120px;
+  aspect-ratio: 5/1.1;
+}
