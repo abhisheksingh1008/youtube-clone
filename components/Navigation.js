@@ -8,7 +8,7 @@ import { categories, options } from "@/utils/constants";
 const Navigation = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
-  const { selectedCategory, setSelectedCategory, mobileMenu } = useApp();
+  const { selectedCategory, setSelectedCategory } = useApp();
 
   return (
     <Box
@@ -19,13 +19,7 @@ const Navigation = () => {
       left="0"
       top={{ base: "6.5rem", md: "3.75rem" }}
       bg={colorMode === "dark" ? "#1A202C" : "white"}
-      display={{
-        lg: "block",
-        md: mobileMenu ? "block" : "none",
-        base: mobileMenu ? "block" : "none",
-      }}
-      zIndex={{ base: "dropdown", md: "dropdown", lg: "auto" }}
-      boxShadow={{ md: "none", base: "2xl" }}
+      display={{ lg: "block", md: "none", base: "none" }}
     >
       {categories.map((category) => (
         <Box key={category.name}>

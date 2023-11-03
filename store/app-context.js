@@ -9,11 +9,9 @@ const AppContext = createContext({
   totalVideos: 0,
   loadingVideos: false,
   nextPageToken: "",
-  mobileMenu: false,
   selectedCategory: "",
   setError: () => {},
   setVideos: () => {},
-  setMobileMenu: () => {},
   setTotalVideos: () => {},
   setLoadingVideos: () => {},
   setNextPageToken: () => {},
@@ -26,7 +24,6 @@ const AppContextProvider = ({ children }) => {
   const [totalVideos, setTotalVideos] = useState(0);
   const [loadingVideos, setLoadingVideos] = useState(false);
   const [nextPageToken, setNextPageToken] = useState("");
-  const [mobileMenu, setMobileMenu] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("New");
 
   useEffect(() => {
@@ -76,14 +73,12 @@ const AppContextProvider = ({ children }) => {
       value={{
         videos,
         error,
-        mobileMenu,
         totalVideos,
         loadingVideos,
         nextPageToken,
         selectedCategory,
         setError,
         setVideos,
-        setMobileMenu,
         setTotalVideos,
         setLoadingVideos,
         setNextPageToken,

@@ -1,15 +1,13 @@
 "use client";
 
 import { useState } from "react";
-
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/store/app-context";
 import { RiSearchLine } from "react-icons/ri";
-import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import MobileLogo from "@/assets/yt-logo-mobile.png";
 import Logo from "@/assets/yt-logo.png";
 import {
   Avatar,
@@ -23,9 +21,10 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import classes from "@/styles/Header.module.css";
+import NavigationDrawer from "./NavigationDrawer";
 
 const Header = () => {
-  const { mobileMenu, setMobileMenu, setSelectedCategory } = useApp();
+  const { setSelectedCategory } = useApp();
   const { colorMode, toggleColorMode } = useColorMode();
   const router = useRouter();
   const toast = useToast();
@@ -76,15 +75,14 @@ const Header = () => {
           justifyContent="space-between"
         >
           <Box display={"flex"} alignItems="center">
-            <Button
-              mr={3}
-              onClick={() => {
-                setMobileMenu((prev) => !prev);
-              }}
-              display={{ md: "block", base: "none", lg: "none" }}
-            >
-              {mobileMenu ? <RxCross1 /> : <RxHamburgerMenu />}
-            </Button>
+            <NavigationDrawer>
+              <Button
+                mr={3}
+                display={{ md: "block", base: "none", lg: "none" }}
+              >
+                <RxHamburgerMenu />
+              </Button>
+            </NavigationDrawer>
             <Link href={"/"}>
               <Image
                 src={Logo}
@@ -138,19 +136,12 @@ const Header = () => {
           minW={"100%"}
           display={{ lg: "none", md: "none", base: "block" }}
         >
-          <Box
-            display="flex"
-            alignItems="center"
-            // justifyContent={"space-between"}
-          >
-            <Button
-              mr={1}
-              onClick={() => {
-                setMobileMenu((prev) => !prev);
-              }}
-            >
-              {mobileMenu ? <RxCross1 /> : <RxHamburgerMenu />}
-            </Button>
+          <Box display="flex" alignItems="center">
+            <NavigationDrawer>
+              <Button mr={1}>
+                <RxHamburgerMenu />
+              </Button>
+            </NavigationDrawer>
             <Box width={"100%"}>
               <form onKeyDown={handleSearch}>
                 <InputGroup size="md">

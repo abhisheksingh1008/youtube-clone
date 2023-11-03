@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import axios from "axios";
 import { Box, useColorMode } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -22,6 +23,7 @@ export default function Home() {
     setVideos,
     setTotalVideos,
     setNextPageToken,
+    setSelectedCategory,
   } = useApp();
 
   const fetchMoreVideosByCategory = async () => {
@@ -53,6 +55,10 @@ export default function Home() {
       }
     }
   };
+
+  useEffect(() => {
+    setSelectedCategory("New");
+  }, []);
 
   return (
     <Box w="100%">
